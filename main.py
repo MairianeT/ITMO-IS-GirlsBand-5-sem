@@ -181,3 +181,5 @@ disp_img.pack()
 window.config(menu=main_menu)
 window.protocol("WM_DELETE_WINDOW", on_closing)
 window.mainloop()
+
+# test
