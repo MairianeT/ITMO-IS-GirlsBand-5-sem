@@ -11,6 +11,11 @@ from PIL import Image, ImageTk
 import matplotlib.pyplot as plt
 
 def show_picture():
+    """Метод для вывода изображения в окно приложения
+
+    Exception
+        Если файл не выбран или имеет неправильное разрешение вызовется исключение
+    """
     global files_name
     global start_label
     global pixels
@@ -31,6 +36,11 @@ def show_picture():
         messagebox.showerror("Ошибка", "Неверный формат файла")
 
 def save_png_picture():
+    """Метод для сохранения изображения в формате png
+
+    Exception
+        Если файл не найден вызовется исключение
+    """
     global files_name
     try:
         h, f, k = read(files_name)
@@ -39,6 +49,11 @@ def save_png_picture():
         messagebox.showerror("Ошибка", "Файл не найден")
 
 def save_pnm_picture():
+    """Метод для сохранения изображения в формате pnm
+
+    Exception
+        Если файл не найден вызовется исключение
+    """
     global files_name
     try:
         h, f, k = read(files_name)
@@ -47,6 +62,17 @@ def save_pnm_picture():
         messagebox.showerror("Ошибка", "Файл не найден")
 
 def save_as_picture(comboExample, new_files_name):
+    """Метод для сохранения изображения с определенным именем в одном из двух разрешений(png/pnm)
+    Parameters
+    ----------
+    comboExample : str, necessary
+        формат файла
+    new_files_name : str, necessary
+        имя файла для сохранения
+
+    Exception
+        Если файл не найден вызовется исключение
+    """
     global files_name
     try:
         h, f, k = read(files_name)
@@ -64,6 +90,8 @@ def save_as_picture(comboExample, new_files_name):
         messagebox.showerror("Ошибка", "Файл не может быть создан")
 
 def browse_files():
+    """Метод для выбора изображения из файловой системы
+    """
     global files_name
     filename = filedialog.askopenfilename(initialdir="/",
         title="Select a File",
@@ -71,15 +99,21 @@ def browse_files():
     files_name = filename
 
 def on_closing():
+    """Метод для закрытия всех окон
+    """
     window.destroy()
 
 def open():
+    """Метод для открытия изображения
+    """
     global pixels
     browse_files()
     show_picture()
     pixels = read(files_name)[1]
 
 def save_as():
+    """Метод для открытия нового окна и ввода имя и формата изображения для сохранения
+    """
     newWindow = Toplevel(window)
     newWindow.title("Сохранить как")
     newWindow.geometry('600x200')
@@ -108,7 +142,17 @@ def save_as():
     )
     save_as_btn.grid(row=1, column=5)
 
+
 def save_as_canal(chanal):
+    """Метод для открытия нового окна и ввода имя и формата изображения для сохранения(для одного канала)
+
+    Обнуляет все каналы, кроме выбранного
+
+    Parameters
+    ----------
+    chanal : int, necessary
+        индекс канала, который будет сохранен
+    """
     newWindow = Toplevel(window)
     newWindow.title("Сохранить отдкльный канал")
     newWindow.geometry('300x100')
@@ -138,6 +182,7 @@ def save_as_canal(chanal):
     save_as_btn.grid(row=1, column=5)
 
 def clean_picture():
+    """Метод для сброса изображения"""
     global start_label
     global files_name
     disp_img.config(image='')
@@ -148,6 +193,13 @@ def clean_picture():
 
 
 def change_space(new_space):
+    """Метод для изменения цветового пространства
+
+    Parameters
+    ----------
+    new_space : array, necessary
+        массив, в котором хранится название цветового пространства и названия каждого канала
+    """
     global pixels
     global current_space
     if new_space[0] != current_space[0]:
@@ -172,6 +224,14 @@ def change_space(new_space):
     plt.show()
 
 def change_canal(index):
+    """Метод для выбора канала
+
+        Parameters
+        ----------
+        index : int, necessary
+            индекс канала/ов, который/ые нужно отобразить/сохранить
+            для RGB: 0-RGB 1-R 2-G 3-B
+        """
     global current_space
     global pixels
     if (index == 0):
