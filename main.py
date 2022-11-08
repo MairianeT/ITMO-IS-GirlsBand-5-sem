@@ -105,6 +105,35 @@ def save_as():
     )
     save_as_btn.grid(row=1, column=5)
 
+def save_as_canal(chanal):
+    newWindow = Toplevel(window)
+    newWindow.title("Сохранить отдкльный канал")
+    newWindow.geometry('300x100')
+
+    newFrame = Frame(
+        newWindow,
+        padx=5,
+        pady=5
+    )
+    newFrame.pack(expand=True)
+
+    labelTop = Label(newFrame, text = "Название файла: ")
+    labelTop.grid(row=1, column=1)
+    new_files_name = Entry(
+        newFrame,
+    )
+    new_files_name.grid(row=1, column=2)
+    labelTop = Label(newFrame, text = "Формат: ")
+    labelTop.grid(row=1, column=3)
+    comboExample = ttk.Combobox(newFrame, values=[".png", ".pnm"])
+    comboExample.grid(row=1, column=4)
+    save_as_btn = Button(
+        newFrame,
+        text='Cохранить',
+        command=lambda: save_as_picture(comboExample, new_files_name)
+    )
+    save_as_btn.grid(row=1, column=5)
+
 def clean_picture():
     global start_label
     global files_name
