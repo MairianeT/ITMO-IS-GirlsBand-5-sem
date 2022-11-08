@@ -5,6 +5,7 @@ from Func import *
 from ColorSpaces import *
 from tkinter import filedialog
 from PIL import Image, ImageTk
+import matplotlib.pyplot as plt
 
 def show_picture():
     global files_name
@@ -55,7 +56,7 @@ def save_as_picture(comboExample, new_files_name):
             if (new_files_name.get() == ""):
                 save_pnm_picture()
             else:
-                write(new_files_nаame.get() + ".pnm", f, k)
+                write(new_files_name.get() + ".pnm", f, k)
     except RuntimeError:
         messagebox.showerror("Ошибка", "Файл не может быть создан")
 
@@ -113,6 +114,7 @@ def clean_picture():
     start_label = Label(frame, text = "Для начала работы выберите изображение (Файл - Открыть)")
     start_label.grid(row=1, column=1)
 
+
 def change_space(new_space):
     global pixels
     global current_space
@@ -124,9 +126,16 @@ def change_space(new_space):
         else:
             pixels = from_RGB(new_space[0], pixels)
         current_space = new_space
+    if current_space[0] != "RGB":
+        pixels_to_show = to_RGB(current_space[0], pixels)
+    else:
+        pixels_to_show = pixels
+    plt.imshow(pixels_to_show.astype('uint8'))
+    plt.show()
 
 def change_canal(index):
     global current_space
+
 
 window = Tk()
 window.title('Графическое приложение')
