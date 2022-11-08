@@ -1,6 +1,9 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
+
+import numpy as np
+
 from Func import *
 from ColorSpaces import *
 from tkinter import filedialog
@@ -75,8 +78,6 @@ def open():
     browse_files()
     show_picture()
     pixels = read(files_name)[1]
-    global rgb_buffer
-    rgb_buffer = pixels
 
 def save_as():
     newWindow = Toplevel(window)
@@ -147,41 +148,46 @@ def clean_picture():
 
 
 def change_space(new_space):
-    global rgb_buffer
+    global pixels
     global current_space
-    current_space = new_space
+    if new_space[0] != current_space[0]:
+        if current_space[0] != "RGB":
+            pixels = to_RGB(current_space[0], pixels)
+            if new_space[0] != "RGB":
+                pixels = from_RGB(new_space[0], pixels)
+        else:
+            pixels = from_RGB(new_space[0], pixels)
+        current_space = new_space
+    if current_space[0] != "RGB":
+        pixels_to_show = to_RGB(current_space[0], pixels)
+    else:
+        pixels_to_show = pixels
 
     canals.delete(0, 3)
     canals.add_command(label=current_space[0], command=lambda: change_canal(0))
     canals.add_command(label=current_space[1], command=lambda: change_canal(1))
     canals.add_command(label=current_space[2], command=lambda: change_canal(2))
     canals.add_command(label=current_space[3], command=lambda: change_canal(3))
-    plt.imshow(rgb_buffer.astype('uint8'))
+    plt.imshow(pixels_to_show.astype('uint8'))
     plt.show()
 
 def change_canal(index):
     global current_space
     global pixels
-    global rgb_buffer
-    pixels_to_show = pixels
-    if index == 0:
-        pixels = rgb_buffer
+    if (index == 0):
+        pixels_to_show = pixels
     else:
-        if current_space[0] != "RGB":
-            pixels_to_show = to_RGB(current_space[0], rgb_buffer)
-        for i in range(len(rgb_buffer)):
-            for j in range(len(rgb_buffer[0])):
+        pixels_to_show = np.zeros((len(pixels[0]), len(pixels[0]), 3), dtype="float32")
+        for i in range(len(pixels)):
+            for j in range(len(pixels[0])):
                 for k in range(3):
                     if k + 1 == index:
                         pixels_to_show[i, j][k] = pixels[i, j][k]
-                    else:
-                        pixels_to_show[i, j][k] = 0
+
         if current_space[0] != "RGB":
-            pixels = to_RGB(current_space[0], pixels_to_show)
-        else:
-            pixels = pixels_to_show
-    plt.imshow(pixels.astype('uint8'))
-    pixels = rgb_buffer
+            pixels_to_show = to_RGB(current_space[0], pixels_to_show)
+
+    plt.imshow(pixels_to_show.astype('uint8'))
     plt.show()
 
 
