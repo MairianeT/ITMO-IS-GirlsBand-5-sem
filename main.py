@@ -1,6 +1,9 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
+
+import numpy as np
+
 from Func import *
 from ColorSpaces import *
 from tkinter import filedialog
@@ -159,11 +162,34 @@ def change_space(new_space):
         pixels_to_show = to_RGB(current_space[0], pixels)
     else:
         pixels_to_show = pixels
+
+    canals.delete(0, 3)
+    canals.add_command(label=current_space[0], command=lambda: change_canal(0))
+    canals.add_command(label=current_space[1], command=lambda: change_canal(1))
+    canals.add_command(label=current_space[2], command=lambda: change_canal(2))
+    canals.add_command(label=current_space[3], command=lambda: change_canal(3))
     plt.imshow(pixels_to_show.astype('uint8'))
     plt.show()
 
 def change_canal(index):
     global current_space
+    global pixels
+    if (index == 0):
+        pixels_to_show = pixels
+    else:
+        pixels_to_show = np.zeros((len(pixels[0]), len(pixels[0]), 3), dtype="float32")
+        for i in range(len(pixels)):
+            for j in range(len(pixels[0])):
+                for k in range(3):
+                    if k + 1 == index:
+                        pixels_to_show[i, j][k] = pixels[i, j][k]
+
+        if current_space[0] != "RGB":
+            pixels_to_show = to_RGB(current_space[0], pixels_to_show)
+
+    plt.imshow(pixels_to_show.astype('uint8'))
+    plt.show()
+
 
 
 window = Tk()
@@ -219,5 +245,3 @@ disp_img.pack()
 window.config(menu=main_menu)
 window.protocol("WM_DELETE_WINDOW", on_closing)
 window.mainloop()
-
-# test
