@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module main</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">main</strong></td>
+<td class="extra"><a href="..">index</a><br><a href="file:c%3A%5Cusers%5Cmairianet%5Cpycharmprojects%5Ccg22-project-girlsband%5Cmain.py">c:\users\mairianet\pycharmprojects\cg22-project-girlsband\main.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="PIL.Image.html">PIL.Image</a><br>
+<a href="PIL.ImageTk.html">PIL.ImageTk</a><br>
+<a href="tkinter.filedialog.html">tkinter.filedialog</a><br>
+</td><td class="multicolumn"><a href="matplotlib.html">matplotlib</a><br>
+<a href="tkinter.messagebox.html">tkinter.messagebox</a><br>
+<a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"><a href="matplotlib.pyplot.html">matplotlib.pyplot</a><br>
+<a href="re.html">re</a><br>
+<a href="tkinter.ttk.html">tkinter.ttk</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-browse_files"><strong>browse_files</strong></a>()</dt><dd><span class="code">Метод&nbsp;для&nbsp;выбора&nbsp;изображения&nbsp;из&nbsp;файловой&nbsp;системы</span></dd></dl>
+ <dl><dt><a name="-change_canal"><strong>change_canal</strong></a>(index)</dt><dd><span class="code">Метод&nbsp;для&nbsp;выбора&nbsp;канала<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+index&nbsp;:&nbsp;int,&nbsp;necessary<br>
+&nbsp;&nbsp;&nbsp;&nbsp;индекс&nbsp;канала/ов,&nbsp;который/ые&nbsp;нужно&nbsp;отобразить/сохранить<br>
+&nbsp;&nbsp;&nbsp;&nbsp;для&nbsp;RGB:&nbsp;0-RGB&nbsp;1-R&nbsp;2-G&nbsp;3-B</span></dd></dl>
+ <dl><dt><a name="-change_space"><strong>change_space</strong></a>(new_space)</dt><dd><span class="code">Метод&nbsp;для&nbsp;изменения&nbsp;цветового&nbsp;пространства<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+new_space&nbsp;:&nbsp;array,&nbsp;necessary<br>
+&nbsp;&nbsp;&nbsp;&nbsp;массив,&nbsp;в&nbsp;котором&nbsp;хранится&nbsp;название&nbsp;цветового&nbsp;пространства&nbsp;и&nbsp;названия&nbsp;каждого&nbsp;канала</span></dd></dl>
+ <dl><dt><a name="-clean_picture"><strong>clean_picture</strong></a>()</dt><dd><span class="code">Метод&nbsp;для&nbsp;сброса&nbsp;изображения</span></dd></dl>
+ <dl><dt><a name="-on_closing"><strong>on_closing</strong></a>()</dt><dd><span class="code">Метод&nbsp;для&nbsp;закрытия&nbsp;всех&nbsp;окон</span></dd></dl>
+ <dl><dt><a name="-open"><strong>open</strong></a>()</dt><dd><span class="code">Метод&nbsp;для&nbsp;открытия&nbsp;изображения</span></dd></dl>
+ <dl><dt><a name="-save_as"><strong>save_as</strong></a>()</dt><dd><span class="code">Метод&nbsp;для&nbsp;открытия&nbsp;нового&nbsp;окна&nbsp;и&nbsp;ввода&nbsp;имя&nbsp;и&nbsp;формата&nbsp;изображения&nbsp;для&nbsp;сохранения</span></dd></dl>
+ <dl><dt><a name="-save_as_canal"><strong>save_as_canal</strong></a>(chanal)</dt><dd><span class="code">Метод&nbsp;для&nbsp;открытия&nbsp;нового&nbsp;окна&nbsp;и&nbsp;ввода&nbsp;имя&nbsp;и&nbsp;формата&nbsp;изображения&nbsp;для&nbsp;сохранения(для&nbsp;одного&nbsp;канала)<br>
+&nbsp;<br>
+Обнуляет&nbsp;все&nbsp;каналы,&nbsp;кроме&nbsp;выбранного<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+chanal&nbsp;:&nbsp;int,&nbsp;necessary<br>
+&nbsp;&nbsp;&nbsp;&nbsp;индекс&nbsp;канала,&nbsp;который&nbsp;будет&nbsp;сохранен</span></dd></dl>
+ <dl><dt><a name="-save_as_picture"><strong>save_as_picture</strong></a>(comboExample, new_files_name)</dt><dd><span class="code">Метод&nbsp;для&nbsp;сохранения&nbsp;изображения&nbsp;с&nbsp;определенным&nbsp;именем&nbsp;в&nbsp;одном&nbsp;из&nbsp;двух&nbsp;разрешений(png/pnm)<br>
+Parameters<br>
+----------<br>
+comboExample&nbsp;:&nbsp;str,&nbsp;necessary<br>
+&nbsp;&nbsp;&nbsp;&nbsp;формат&nbsp;файла<br>
+new_files_name&nbsp;:&nbsp;str,&nbsp;necessary<br>
+&nbsp;&nbsp;&nbsp;&nbsp;имя&nbsp;файла&nbsp;для&nbsp;сохранения<br>
+&nbsp;<br>
+Exception<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Если&nbsp;файл&nbsp;не&nbsp;найден&nbsp;вызовется&nbsp;исключение</span></dd></dl>
+ <dl><dt><a name="-save_png_picture"><strong>save_png_picture</strong></a>()</dt><dd><span class="code">Метод&nbsp;для&nbsp;сохранения&nbsp;изображения&nbsp;в&nbsp;формате&nbsp;png<br>
+&nbsp;<br>
+Exception<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Если&nbsp;файл&nbsp;не&nbsp;найден&nbsp;вызовется&nbsp;исключение</span></dd></dl>
+ <dl><dt><a name="-save_pnm_picture"><strong>save_pnm_picture</strong></a>()</dt><dd><span class="code">Метод&nbsp;для&nbsp;сохранения&nbsp;изображения&nbsp;в&nbsp;формате&nbsp;pnm<br>
+&nbsp;<br>
+Exception<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Если&nbsp;файл&nbsp;не&nbsp;найден&nbsp;вызовется&nbsp;исключение</span></dd></dl>
+ <dl><dt><a name="-show_picture"><strong>show_picture</strong></a>()</dt><dd><span class="code">Метод&nbsp;для&nbsp;вывода&nbsp;изображения&nbsp;в&nbsp;окно&nbsp;приложения<br>
+&nbsp;<br>
+Exception<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Если&nbsp;файл&nbsp;не&nbsp;выбран&nbsp;или&nbsp;имеет&nbsp;неправильное&nbsp;разрешение&nbsp;вызовется&nbsp;исключение</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>ACTIVE</strong> = 'active'<br>
+<strong>ALL</strong> = 'all'<br>
+<strong>ANCHOR</strong> = 'anchor'<br>
+<strong>ARC</strong> = 'arc'<br>
+<strong>BASELINE</strong> = 'baseline'<br>
+<strong>BEVEL</strong> = 'bevel'<br>
+<strong>BOTH</strong> = 'both'<br>
+<strong>BOTTOM</strong> = 'bottom'<br>
+<strong>BROWSE</strong> = 'browse'<br>
+<strong>BUTT</strong> = 'butt'<br>
+<strong>CASCADE</strong> = 'cascade'<br>
+<strong>CENTER</strong> = 'center'<br>
+<strong>CHAR</strong> = 'char'<br>
+<strong>CHECKBUTTON</strong> = 'checkbutton'<br>
+<strong>CHORD</strong> = 'chord'<br>
+<strong>COMMAND</strong> = 'command'<br>
+<strong>CURRENT</strong> = 'current'<br>
+<strong>DISABLED</strong> = 'disabled'<br>
+<strong>DOTBOX</strong> = 'dotbox'<br>
+<strong>E</strong> = 'e'<br>
+<strong>END</strong> = 'end'<br>
+<strong>EW</strong> = 'ew'<br>
+<strong>EXCEPTION</strong> = 8<br>
+<strong>EXTENDED</strong> = 'extended'<br>
+<strong>FALSE</strong> = 0<br>
+<strong>FIRST</strong> = 'first'<br>
+<strong>FLAT</strong> = 'flat'<br>
+<strong>GROOVE</strong> = 'groove'<br>
+<strong>HIDDEN</strong> = 'hidden'<br>
+<strong>HORIZONTAL</strong> = 'horizontal'<br>
+<strong>INSERT</strong> = 'insert'<br>
+<strong>INSIDE</strong> = 'inside'<br>
+<strong>LAST</strong> = 'last'<br>
+<strong>LEFT</strong> = 'left'<br>
+<strong>MITER</strong> = 'miter'<br>
+<strong>MOVETO</strong> = 'moveto'<br>
+<strong>MULTIPLE</strong> = 'multiple'<br>
+<strong>N</strong> = 'n'<br>
+<strong>NE</strong> = 'ne'<br>
+<strong>NO</strong> = 0<br>
+<strong>NONE</strong> = 'none'<br>
+<strong>NORMAL</strong> = 'normal'<br>
+<strong>NS</strong> = 'ns'<br>
+<strong>NSEW</strong> = 'nsew'<br>
+<strong>NUMERIC</strong> = 'numeric'<br>
+<strong>NW</strong> = 'nw'<br>
+<strong>OFF</strong> = 0<br>
+<strong>ON</strong> = 1<br>
+<strong>OUTSIDE</strong> = 'outside'<br>
+<strong>PAGES</strong> = 'pages'<br>
+<strong>PIESLICE</strong> = 'pieslice'<br>
+<strong>PROJECTING</strong> = 'projecting'<br>
+<strong>RADIOBUTTON</strong> = 'radiobutton'<br>
+<strong>RAISED</strong> = 'raised'<br>
+<strong>READABLE</strong> = 2<br>
+<strong>RIDGE</strong> = 'ridge'<br>
+<strong>RIGHT</strong> = 'right'<br>
+<strong>ROUND</strong> = 'round'<br>
+<strong>S</strong> = 's'<br>
+<strong>SCROLL</strong> = 'scroll'<br>
+<strong>SE</strong> = 'se'<br>
+<strong>SEL</strong> = 'sel'<br>
+<strong>SEL_FIRST</strong> = 'sel.first'<br>
+<strong>SEL_LAST</strong> = 'sel.last'<br>
+<strong>SEPARATOR</strong> = 'separator'<br>
+<strong>SINGLE</strong> = 'single'<br>
+<strong>SOLID</strong> = 'solid'<br>
+<strong>SUNKEN</strong> = 'sunken'<br>
+<strong>SW</strong> = 'sw'<br>
+<strong>TOP</strong> = 'top'<br>
+<strong>TRUE</strong> = 1<br>
+<strong>TclVersion</strong> = 8.6<br>
+<strong>TkVersion</strong> = 8.6<br>
+<strong>UNDERLINE</strong> = 'underline'<br>
+<strong>UNITS</strong> = 'units'<br>
+<strong>VERTICAL</strong> = 'vertical'<br>
+<strong>W</strong> = 'w'<br>
+<strong>WORD</strong> = 'word'<br>
+<strong>WRITABLE</strong> = 4<br>
+<strong>X</strong> = 'x'<br>
+<strong>Y</strong> = 'y'<br>
+<strong>YES</strong> = 1<br>
+<strong>canals</strong> = &lt;tkinter.Menu object .!menu4&gt;<br>
+<strong>change_menu</strong> = &lt;tkinter.Menu object .!menu5&gt;<br>
+<strong>color_spaces</strong> = &lt;tkinter.Menu object .!menu3&gt;<br>
+<strong>current_space</strong> = ['RGB', 'R', 'G', 'B']<br>
+<strong>disp_img</strong> = &lt;tkinter.Label object .!label&gt;<br>
+<strong>file_menu</strong> = &lt;tkinter.Menu object .!menu2&gt;<br>
+<strong>files_name</strong> = ''<br>
+<strong>frame</strong> = &lt;tkinter.Frame object .!frame&gt;<br>
+<strong>main_menu</strong> = &lt;tkinter.Menu object .!menu&gt;<br>
+<strong>start_label</strong> = &lt;tkinter.Label object .!frame.!label&gt;<br>
+<strong>window</strong> = &lt;tkinter.Tk object .&gt;</td></tr></table>
+</body></html>

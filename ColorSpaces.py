@@ -1,24 +1,68 @@
 import numpy as np
 
 def RGB_CMY(R, G, B):
+    """Перевод из формата RGB в CMY
+
+    Parameters
+    ----------
+    R : float, necessary
+        значение красного канала
+    G : float, necessary
+        значение зеленого канала
+    B : float, necessary
+        значение синего канала
+    """
     C = 1.0 - (R / 255.0)
     M = 1.0 - (G / 255.0)
     Y = 1.0 - (B / 255.0)
     return C, M, Y
 
 def CMY_RGB(C, M, Y):
+    """Перевод из формата CMY в RGB
+
+    Parameters
+    ----------
+    C : float, necessary
+        значение канала "циан"
+    M : float, necessary
+        значение канала "маджента"
+    Y : float, necessary
+        значение желтого канала
+    """
     R = 255.0 * (1.0 - C)
     G = 255.0 * (1.0 - M)
     B = 255.0 * (1.0 - Y)
     return R, G, B
 
 def RGB_YCoCg(R, G, B):
+    """Перевод из формата RGB в YCoCg
+
+    Parameters
+    ----------
+    R : float, necessary
+        значение красного канала
+    G : float, necessary
+        значение зеленого канала
+    B : float, necessary
+        значение синего канала
+    """
     matrix = np.array([[1/4, 1/2, 1/4], [1/2, 0, -1/2], [-1/4, 1/2, -1/4]])
     rgb = np.array([R, G, B])
     res = matrix.dot(rgb)
     return res[0], res[1], res[2]
 
 def YCoCg_RGB(Y, Co, Cg):
+    """Перевод из формата YCoCg в RGB
+
+    Parameters
+    ----------
+    Y : float, necessary
+        значение канала яркости
+    Co : float, necessary
+        значение оранжевого канала
+    Cg : float, necessary
+        значение зеленого канала
+    """
     tmp = Y - Cg
     R = tmp + Co
     G = Y + Cg
@@ -26,30 +70,85 @@ def YCoCg_RGB(Y, Co, Cg):
     return R, G, B
 
 def RGB_YCbCr601(R, G, B):
+    """Перевод из формата RGB в YCbCr601
+
+    Parameters
+    ----------
+    R : float, necessary
+         значение красного канала
+    G : float, necessary
+        значение зеленого канала
+    B : float, necessary
+        значение синего канала
+    """
     Y = 0.299 * R + 0.587 * G + 0.114 * B
     Cb = (B - Y) / 1.772
     Cr = (R - Y) / 1.402
     return Y, Cb, Cr
 
 def YCbCr601_RGB(Y, Cb, Cr):
+    """Перевод из формата YCbCr601 в RGB
+
+    Parameters
+    ----------
+    Y : float, necessary
+        значение канала яркости
+    Cb : float, necessary
+        значение синего цветоразностного канала
+    Cr : float, necessary
+        значение красного цветоразностного  канала
+    """
     R = Y + 1.402 * Cr
     G = Y - (0.299 * 1.402 / 0.587) * Cr - (0.114 * 1.772 / 0.587) * Cb
     B = Y + 1.772 * Cb
     return R, G, B
 
 def RGB_YCbCr709(R, G, B):
+    """Перевод из формата RGB в YCbCr709
+
+    Parameters
+    ----------
+    R : float, necessary
+        значение красного канала
+    G : float, necessary
+        значение зеленого канала
+    B : float, necessary
+        значение синего канала
+    """
     Y = 0.2126 * R + 0.7152 * G + 0.0722 * B
     Cb = (B - Y) / 1.8556
     Cr = (R - Y) / 1.5748
     return Y, Cb, Cr
 
 def YCbCr709_RGB(Y, Cb, Cr):
+    """Перевод из формата YCbCr709 в RGB
+
+    Parameters
+    ----------
+    Y : float, necessary
+        значение канала яркости
+    Cb : float, necessary
+        значение синего цветоразностного канала
+    Cr : float, necessary
+        значение красного цветоразностного  канала
+    """
     R = Y + 1.5748 * Cr
     G = Y - (0.2126 * 1.5748 / 0.7152) * Cr - (0.0722 * 1.8556 / 0.7152) * Cb
     B = Y + 1.8556 * Cb
     return R, G, B
 
 def RGB_HSV(R, G, B):
+    """Перевод из формата RGB в HSV
+
+    Parameters
+    ----------
+    R : float, necessary
+         значение красного канала
+    G : float, necessary
+        значение зеленого канала
+    B : float, necessary
+        значение синего канала
+    """
     R, G, B = R / 255.0, G / 255.0, B / 255.0
     Cmax = max(R, G, B)
     Cmin = min(R, G, B)
@@ -74,6 +173,17 @@ def RGB_HSV(R, G, B):
     return H, S, V
 
 def HSV_RGB(H, S, V):
+    """Перевод из формата HSV в RGB
+
+    Parameters
+    ----------
+    H : float, necessary
+        значение цветового тона
+    S : float, necessary
+        значение насыщенности
+    V : float, necessary
+        значение канала яркости
+    """
     C = V*S
     X = C * (1 - abs((H/60) % 2 - 1))
     m = V - C
@@ -105,6 +215,17 @@ def HSV_RGB(H, S, V):
     return R, G, B
 
 def RGB_HSL(R, G, B):
+    """Перевод из формата RGB в HSL
+
+    Parameters
+    ----------
+    R : float, necessary
+        значение красного канала
+    G : float, necessary
+        значение зеленого канала
+    B : float, necessary
+        значение синего канала
+    """
     R, G, B = R / 255.0, G / 255.0, B / 255.0
     Cmax = max(R, G, B)
     Cmin = min(R, G, B)
@@ -129,6 +250,17 @@ def RGB_HSL(R, G, B):
     return H, S, L
 
 def HSL_RGB(H, S, L):
+    """Перевод из формата HSL в RGB
+
+    Parameters
+    ----------
+    H : float, necessary
+        значение цветового тона
+    S : float, necessary
+        значение насыщенности
+    L : float, necessary
+        значение светлости
+    """
     C = (1 - abs(2 * L - 1)) * S
     X = C * (1 - abs((H/60) % 2 - 1))
     m = L - C/2
@@ -160,6 +292,15 @@ def HSL_RGB(H, S, L):
     return R, G, B
 
 def to_RGB(space, buffer):
+    """Перевод картинки в RGB
+
+    Parameters
+    ----------
+    space : array, necessary
+        массив, в котором хранится название цветового пространства и названия каждого канала
+    buffer : array, necessary
+        массив значений каналов для пикселей
+    """
     new_buffer = np.empty((len(buffer[0]), len(buffer[0]), 3), dtype="float32")
     match space:
         case "HSL":
@@ -189,6 +330,15 @@ def to_RGB(space, buffer):
     return new_buffer
 
 def from_RGB(space, buffer):
+    """Перевод картинки из RGB
+
+    Parameters
+    ----------
+    space : array, necessary
+        массив, в котором хранится название цветового пространства и названия каждого канала
+    buffer : array, necessary
+        массив значений каналов для пикселей
+    """
     new_buffer = np.empty((len(buffer[0]), len(buffer[0]), 3), dtype="float32")
     match space:
         case "HSL":

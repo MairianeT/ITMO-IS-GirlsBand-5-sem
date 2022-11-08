@@ -14,11 +14,18 @@ def convert(img, title=None):
 
 
 def catch_error(expression, exception_type=RuntimeError):
+    """Метод для обработки ошибок при чтении/записи файла"""
     if not expression:
         raise exception_type()
 
 
 def read(filespec):
+    """Метод для чтения файла в формате pnm
+    Parameters
+    ----------
+    filespec : str, necessary
+         имя файла
+    """
     valid_extensions = [".pnm", ".ppm", ".pgm", ".PNM", ".PPM", ".PGM"]
     catch_error(isinstance(filespec, str) and len(filespec) >= 5)
     catch_error(filespec[-4:] in valid_extensions)
@@ -48,6 +55,16 @@ def read(filespec):
 
 
 def write(filespec, image, maxval):
+    """Метод для записи в файл в формате pnm
+    Parameters
+    ----------
+    filespec : str, necessary
+         имя файла
+    image : array, necessary
+        массив значений каналов для пикселей
+    maxval : float, necessary
+        глубина цвета
+    """
     valid_extensions = [".pnm", ".ppm", ".PNM", ".PPM"]
     catch_error(isinstance(filespec, str) and len(filespec) >= 5)
     catch_error(filespec[-4:] in valid_extensions or image.ndim == 2 or image.ndim == 3)
