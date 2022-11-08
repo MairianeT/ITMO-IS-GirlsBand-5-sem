@@ -108,7 +108,7 @@ def save_as():
 def save_as_canal(chanal):
     newWindow = Toplevel(window)
     newWindow.title("Сохранить отдкльный канал")
-    newWindow.geometry('600x200')
+    newWindow.geometry('300x100')
 
     newFrame = Frame(
         newWindow,
