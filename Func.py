@@ -14,7 +14,7 @@ def convert(img, title=None):
 
 
 def catch_error(expression, exception_type=RuntimeError):
-    "Метод для обработки ошибок при чтении/записи файла"
+    """Метод для обработки ошибок при чтении/записи файла"""
     if not expression:
         raise exception_type()
 
